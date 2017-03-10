@@ -1,0 +1,38 @@
+* appman
+
+A nifty app for archiving files based on a yml manifest.
+
+#+NAME: usage
+#+BEGIN_SRC text
+Usage of ./appman:
+  -archive string
+    	The path for the archive (default "./app.tar")
+  -manifest string
+    	The appmain.yml file (default "./appman.yml")
+  -taropts string
+    	The options to pass to tar (default "cf")
+#+END_SRC
+
+Here is an example of an appman.yml file:
+
+#+NAME: example appman.yml
+#+BEGIN_SRC yml
+name: Example Application
+files:
+  - ./foo.txt
+  - ./lib/**/*.foo
+#+END_SRC
+
+Based on an appman.yml file like the one above, running appman will produce the following output:
+
+#+NAME: example appman output
+#+BEGIN_SRC sh
+tar cf ./app.tar ./foo.txt ./lib/**/*.foo
+#+END_SRC
+
+That means you can actually eval the output of this tool:
+
+#+NAME: example appman output eval
+#+BEGIN_SRC sh
+eval "$(./appman)"
+#+END_SRC

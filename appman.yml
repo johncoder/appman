@@ -1,0 +1,4 @@
+name: appman
+files:
+  - ./README.md
+  - ./appman.exe
